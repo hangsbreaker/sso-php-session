@@ -11,5 +11,5 @@ How to use:
 <li><strong>include 'sso_manager.php';</strong> and <strong>is_login();</strong> to your first line login page.</li>
 <li>Call <strong>sso_login(url_to_main_page);</strong> when user login success direct to url main page.</li>
 <li>In main page first line <strong>include 'sso_client.php';</strong> then Call <strong>sso_login(url_to_login_page);</strong>. In other system (other web page) just do like that, <strong>include 'sso_client.php';</strong> and call <strong>sso_login(url_to_login_page);</strong></li>
-<li>For log out page just add <strong>include 'sso_manager.php';</strong> and <strong>sso_logout();</strong></li>
+<li>For log out page just add <strong>include 'sso_manager.php';</strong> and call <strong>sso_logout();</strong></li>
 </ul>
