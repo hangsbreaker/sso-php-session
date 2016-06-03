@@ -3,8 +3,8 @@ Simple SSO PHP based on session
 
 Concept:
 <ul>
-<li>While session empty go to login page with sso-manager.php, while session not empty go to the last record session url.</li>
-<li>When logout, sso-manager redirect to every record url stored in session then sso-client destroy local session and back to sso-manager until all url stored empty</li>
+<li>While session empty go to login page with sso-manager, while session not empty go to the last record session url.</li>
+<li>When logout, sso-manager redirect to every record url stored in session then sso-client destroy local session and back to sso-manager until all url stored empty.</li>
 </ul>
 How to use:
 <ul>
