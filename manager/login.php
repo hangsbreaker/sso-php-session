@@ -1,5 +1,6 @@
 <?php
 require 'sso_manager.php';
+is_login();
 /*$host = 'localhost';
 $user ='root';
 $pass = '';
@@ -19,8 +20,6 @@ if(isset($_POST['submit'])){
 // if logout
 if(isset($_GET['o'])){
 	sso_logout();
-}else{
-	is_login();
 }
 //print_r($_SESSION);
 ?>
