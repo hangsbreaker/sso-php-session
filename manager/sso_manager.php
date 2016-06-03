@@ -1,6 +1,9 @@
 <?php
 session_start();
 $this_page = "http://".$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME'];
+if(isset($_GET['s'])){
+	header("location:".$GLOBALS['this_page']);
+}
 //check is login redirect to url login
 function is_login($url=''){
 	if(isset($_GET['u'])){
