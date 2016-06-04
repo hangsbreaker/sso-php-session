@@ -13,7 +13,11 @@ if(isset($_GET['s'])){
 function sso_login($url=''){
 	// if logout
 	if(isset($_GET['o'])){
-		session_destroy();
+		$host_login = "http://".parse_url($url,PHP_URL_HOST);
+		$host_web = "http://".$_SERVER['HTTP_HOST'];
+		if($host_login != $host_web){
+			session_destroy();
+		}
 		header("location:".$url."?o=l");
 		echo "Harap tunggu...";
 	}else{
