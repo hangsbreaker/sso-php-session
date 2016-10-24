@@ -9,3 +9,4 @@ if(isset($_SESSION['username'])){
 }
 
 ?>
+<a href="http://localhost/sso/manager/login.php?o=l">Logout</a>
