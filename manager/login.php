@@ -21,7 +21,11 @@ if(isset($_POST['submit'])){
 if(isset($_GET['o'])){
 	sso_logout();
 }
-//print_r($_SESSION);
+print_r($_SESSION);
+if(!empty($_SESSION)){
+	echo '<h2>Logged In</h2>
+			<a href="http://localhost/sso/manager/login.php?o=l">Logout</a>';
+}else{
 ?>
 <br>
 Login
@@ -30,3 +34,6 @@ Login
 <input type="password" name="password" placeholder="Password"/><br>
 <input type="submit" name="submit" value="Submit"/><br>
 </form>
+<?php
+}
+?>
