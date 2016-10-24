@@ -10,15 +10,14 @@ function is_login($url=''){
 		if(!empty($_SESSION)){
 			sso_login($_GET['u']);
 		}
-	}
-	if(!empty($_SESSION)){
+	}else if(!empty($_SESSION)){
 		if(!empty($url)){
 			header("location:".$url);
 		}else{
 			foreach($_SESSION['url'] as $key=>$val){
 				$url=$val;
 			}
-			if($url!='' && $url != $_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME']){
+			if($url!='' && $url!=$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME']){
 				sso_login($url);
 			}
 		}
@@ -34,6 +33,7 @@ function sso_login($url=''){
 	}else{
 		$_SESSION['url']=array($url);
 	}
+	$_SESSION['url'] = array_diff($_SESSION['url'],array(''));
 	$json = json_encode($_SESSION);
 	// send session to other page with encrypted using base64 encode
 	header("location:".$url."?s=".base64_encode($json));
