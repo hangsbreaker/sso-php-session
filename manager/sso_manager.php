@@ -13,10 +13,12 @@ function is_login($url=''){
 	}else if(!empty($_SESSION)){
 		if(!empty($url)){
 			header("location:".$url);
-		}else{
-			$url=end($_SESSION['url']);
-			if($url!='' && $url!=$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME']){
-				sso_login($url);
+		}else if(!empty($_SESSION['url'])){
+			if(count($_SESSION['url']) > 0){
+				$url=end($_SESSION['url']);
+				if($url!='' && $url!=$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME']){
+					sso_login($url);
+				}
 			}
 		}
 	}
