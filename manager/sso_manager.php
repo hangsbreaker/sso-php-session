@@ -14,9 +14,7 @@ function is_login($url=''){
 		if(!empty($url)){
 			header("location:".$url);
 		}else{
-			foreach($_SESSION['url'] as $key=>$val){
-				$url=$val;
-			}
+			$url=end($_SESSION['url']);
 			if($url!='' && $url!=$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME']){
 				sso_login($url);
 			}
@@ -42,10 +40,8 @@ function sso_login($url=''){
 // Logout system base on url session
 function sso_logout(){
 	if(!empty($_SESSION['url'])){
-		foreach($_SESSION['url'] as $key=>$val){
-			$url=$val;
-		}
 		if(count($_SESSION['url']) > 0){
+			$url=end($_SESSION['url']);
 			$_SESSION['url'] = array_diff($_SESSION['url'],array($url));
 			header("location:".$url."?o=l&u=".$GLOBALS['this_page']);
 		}
