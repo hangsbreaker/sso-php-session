@@ -40,7 +40,7 @@ function sso_login($url=''){
 		}
 	}else{
 		if($host_login == $host_web){
-			$_SESSION['url']=array("http://".$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME']);
+			$_SESSION['url']=array($GLOBALS['this_page']);
 		}else{
 			$_SESSION['url']=array($url);
 		}
