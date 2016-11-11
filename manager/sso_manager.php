@@ -34,7 +34,7 @@ function sso_login($url=''){
 				array_push($_SESSION['url'],$url);
 			}else if($host_login == $host_web){
 				if(!in_array($host_login,$_SESSION['url'])){
-					array_push($_SESSION['url'],$host_login);
+					array_push($_SESSION['url'],$GLOBALS['this_page']);
 				}
 			}
 		}
