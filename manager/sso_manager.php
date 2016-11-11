@@ -26,12 +26,24 @@ function is_login($url=''){
 // Adding session url from get
 function sso_login($url=''){
 	$url = isset($_GET['u'])?$_GET['u']:$url;
+	$host_login = "http://".$_SERVER['HTTP_HOST'];
+	$host_web = "http://".parse_url($url,PHP_URL_HOST);
 	if(isset($_SESSION['url'])){
 		if(!in_array($url,$_SESSION['url'])){
-			array_push($_SESSION['url'],$url);
+			if($host_login != $host_web){
+				array_push($_SESSION['url'],$url);
+			}else if($host_login == $host_web){
+				if(!in_array($host_login,$_SESSION['url'])){
+					array_push($_SESSION['url'],$host_login);
+				}
+			}
 		}
 	}else{
-		$_SESSION['url']=array($url);
+		if($host_login == $host_web){
+			$_SESSION['url']=array("http://".$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME']);
+		}else{
+			$_SESSION['url']=array($url);
+		}
 	}
 	$_SESSION['url'] = array_diff($_SESSION['url'],array(''));
 	$json = json_encode($_SESSION);
