@@ -19,7 +19,8 @@ function sso_login($url=''){
 			session_destroy();
 		}
 		header("location:".$url."?o=l");
-		echo "Harap tunggu...";
+		echo 'Harap tunggu...<meta http-equiv="refresh" content="0;url='.$url.'?o=l&u='.$this_page.'">';
+		exit;
 	}else{
 		if(empty($_SESSION)){
 			header("location:".$url."?u=".$GLOBALS['this_page']);
