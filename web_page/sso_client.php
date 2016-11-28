@@ -16,10 +16,11 @@ function sso_login($url=''){
 		$host_login = "http://".parse_url($url,PHP_URL_HOST);
 		$host_web = "http://".$_SERVER['HTTP_HOST'];
 		if($host_login != $host_web){
+			// destroy session
 			session_destroy();
 		}
 		header("location:".$url."?o=l");
-		echo 'Harap tunggu...<meta http-equiv="refresh" content="0;url='.$url.'?o=l&u='.$this_page.'">';
+		echo 'Please Wait...<meta http-equiv="refresh" content="0;url='.$url.'?o=l&u='.$this_page.'">';
 		exit;
 	}else{
 		if(empty($_SESSION)){
